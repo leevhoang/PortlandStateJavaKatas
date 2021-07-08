@@ -15,6 +15,14 @@ public class Kata {
    */
   public static String compute(String number) {
     String result = "";
+    try{
+      Integer.parseInt(number);
+    } catch (NumberFormatException e){
+      System.err.println("Value is not a number");
+      return "";
+    }
+
+    // Check the number to see if it is divisible by 3, 5, or 7.
     if (Integer.parseInt(number) % 3 == 0) {
       result += "Foo";
     }
@@ -27,19 +35,26 @@ public class Kata {
       result += "Qix";
     }
 
+    // Check if any characters in the number string are 3, 5, or 7.
+    // Ignore characters that are not one of the three numbers.
     for (int i = 0; i < number.length(); ++i) {
+//      // Negative sign
+//      if (number.charAt(i) == '-') {
+//        result += "-";
+//      }
+      // Number has 3
       if (number.charAt(i) == '3') {
         result += "Foo";
       }
+      // Number has 5
       if (number.charAt(i) == '5') {
         result += "Bar";
       }
+      // Number 7
       if (number.charAt(i) == '7') {
         result += "Qix";
       }
     }
-
-
 
     return result;
   }

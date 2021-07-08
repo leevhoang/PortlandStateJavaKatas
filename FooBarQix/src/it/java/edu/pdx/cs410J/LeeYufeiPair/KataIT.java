@@ -45,5 +45,11 @@ class KataIT extends InvokeMainTestCase {
     assertThat(result.getTextWrittenToStandardError(), containsString("Too many command line arguments"));
   }
 
+  @Test
+  void invokingMainWithLetterArgumentsPrintsToStandardError() {
+    InvokeMainTestCase.MainMethodResult result = invokeMain(Kata.class, "a");
+    assertThat(result.getTextWrittenToStandardError(), containsString("Value is not a number"));
+  }
+
 
 }
